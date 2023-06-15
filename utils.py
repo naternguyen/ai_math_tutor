@@ -1,14 +1,20 @@
 import openai
-def get_initial_message():
+def get_initial_message(selection, name, age):
     messages=[
-            {"role": "system", "content": "You are a helpful AI Math Tutor. "},
+            {"role": "system", "content": "You are a helpful AI Math Tutor. "
+                                          f"User name is {name} and user age is {age}"
+                                          f"You will be a tutor for {name} and you just only focus on the Math knowledge "
+                                          f"for {age}-age person"
+                                          f"After {name} choose the subject, you will provide a list of related subjects for {name}"
+                                          "to choose."},
+
             {"role": "user", "content": "I want to learn Math"},
-            {"role": "assistant", "content": "Hi, I am your Math Tutor, which topics do you want to learn today?"}
+            {"role": "assistant", "content": "Hi, I am your Math Tutor, which subject do you want to learn today?"},
+            {"role": "user", "content": f"I want to learn {selection}"},
         ]
     return messages
 
 def get_chatgpt_response(messages, model="gpt-3.5-turbo"):
-    print("model: ", model)
     response = openai.ChatCompletion.create(
     model=model,
     messages=messages
