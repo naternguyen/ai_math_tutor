@@ -2,10 +2,11 @@ import streamlit as st
 from streamlit_chat import message
 from utils import get_initial_message, get_chatgpt_response, update_chat
 import openai
+from side_bar import create_side_bar
 
 openai.api_key = "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"
-
 st.title("AI MATH TUTOR: Improve your knowledge")
+create_side_bar()
 # with open('style.css') as f:
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 # st.subheader("AI Math Tutor:")
